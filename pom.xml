@@ -29,6 +29,7 @@
     </dependencies>
 
     <build>
+        <finalName>sistema-relatorios</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -45,7 +46,6 @@
                             <mainClass>br.unicamp.padroescriacionais.legacy.Main</mainClass>
                         </manifest>
                     </archive>
-                    <finalName>sistema-relatorios</finalName>
                 </configuration>
             </plugin>
         </plugins>
