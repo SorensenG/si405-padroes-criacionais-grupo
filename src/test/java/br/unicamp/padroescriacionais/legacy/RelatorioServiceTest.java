@@ -88,6 +88,26 @@ class RelatorioServiceTest {
     }
 
     @Test
+    void deveGerarConteudoXmlComTags() {
+        String resultado = service.gerarRelatorio(TipoRelatorio.VENDAS, FormatoRelatorio.XML);
+
+        assertNotNull(resultado);
+        assertFalse(resultado.isBlank());
+        assertTrue(resultado.contains("<relatorio>"), "Saida XML deve conter tag raiz");
+        assertTrue(resultado.contains("</relatorio>"), "Saida XML deve fechar tag raiz");
+    }
+
+    @Test
+    void deveGerarConteudoHtmlComEstruturaBasica() {
+        String resultado = service.gerarRelatorio(TipoRelatorio.ESTOQUE, FormatoRelatorio.HTML);
+
+        assertNotNull(resultado);
+        assertFalse(resultado.isBlank());
+        assertTrue(resultado.contains("<!DOCTYPE html>"), "Saida HTML deve conter doctype");
+        assertTrue(resultado.contains("<html"), "Saida HTML deve conter tag html");
+    }
+
+    @Test
     void todosFormatosDevemProduizirConteudoValido() {
         for (FormatoRelatorio formato : FormatoRelatorio.values()) {
             String resultado = service.gerarRelatorio(TipoRelatorio.VENDAS, formato);
